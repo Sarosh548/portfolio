@@ -1,0 +1,47 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 64px;
+}
+
+.about__body p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.about__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.about__fact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about__fact-value {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--accent-bright);
+}
+
+.about__fact-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+@media (max-width: 860px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about__facts {
+    grid-template-columns: 1fr;
+  }
+}

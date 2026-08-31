@@ -1,0 +1,126 @@
+.projects__intro {
+  font-size: 17px;
+  margin: -4px 0 48px;
+}
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  transition: border-color 0.2s var(--ease);
+}
+
+.project-card:hover {
+  border-color: var(--border-strong);
+}
+
+.project-card__index {
+  font-size: 14px;
+  color: var(--accent-bright);
+  padding-top: 4px;
+}
+
+.project-card__meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.project-card__name {
+  font-size: 26px;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.project-card__subtitle {
+  font-size: 15px;
+  color: var(--accent-bright);
+  margin-bottom: 16px;
+}
+
+.project-card__oneliner {
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 62ch;
+  margin-bottom: 24px;
+}
+
+.project-card__metrics {
+  display: flex;
+  gap: 32px;
+  padding: 18px 0;
+  margin-bottom: 24px;
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.project-card__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-card__metric span:first-child {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.project-card__metric span:last-child {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.tag {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-hairline);
+}
+
+.tag--muted {
+  color: var(--text-muted);
+}
+
+.project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn--sm {
+  padding: 9px 16px;
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .project-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .project-card__index {
+    display: none;
+  }
+}
