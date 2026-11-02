@@ -14,7 +14,7 @@ export const profile = {
   github: "https://github.com/Sarosh548",
   linkedin: "https://www.linkedin.com/in/saroshqaiser",
   // TODO: add a public resume PDF link once available for download
-  resumeUrl: null,
+  resumeUrl: "/Sarosh-Qaiser-AI-Engineer-CV.docx",
   summary:
     "AI Engineer with hands-on experience building agentic workflows, RAG pipelines, and multi-agent systems with LangGraph and React, and shipping production-ready ML models with Python, PyTorch, and TensorFlow. Skilled in designing end-to-end data pipelines, applying NLP and deep learning techniques, and deploying AI solutions across computer vision, forecasting, and full-stack platforms.",
 };
@@ -101,6 +101,75 @@ export const skills = [
 // ─────────────────────────────────────────────────────────────
 
 export const projects = [
+  {
+    slug: "nova-ai-personal-assistant",
+    featured: true,
+    name: "NOVA — AI Personal Assistant",
+    subtitle: "A voice-enabled, memory-aware personal AI companion",
+    context: "Personal project",
+    duration: "2026 — Present",
+    oneLiner: "A JARVIS-inspired AI companion combining natural conversation, real-time voice, persistent memory, and permission-aware tools in one personal assistant.",
+    problem: "Everyday AI workflows are fragmented across separate chat, search, calendar, email, and task applications. A useful personal assistant needs continuity across conversations, the ability to retrieve relevant context, and clear permission boundaries before it acts.",
+    solution: "NOVA brings these workflows together through a modular FastAPI backend and LangGraph orchestration. It supports text and real-time voice conversations, persistent semantic memory, document-grounded context, and tool routing for connected workflows, with approval gates for consequential actions.",
+    myContribution: "Designed and developed the application architecture, backend APIs, conversation and agent workflows, memory/retrieval layer, voice integration, and deployment/testing workflow.",
+    architecture: {
+      description: "A React frontend communicates with a FastAPI backend. LangGraph coordinates conversation and tool workflows; PostgreSQL with pgvector stores persistent context and semantic embeddings; LiveKit/WebSockets support real-time voice and streaming interactions.",
+      flow: [
+        "User input through chat or real-time voice",
+        "Conversation understanding and intent routing",
+        "LangGraph orchestration and context retrieval",
+        "Persistent memory and document-grounded RAG",
+        "Permission checks and approval for sensitive actions",
+        "Tool execution, verification, and activity history"
+      ]
+    },
+    features: [
+      "Text conversation and real-time voice interaction with streaming responses",
+      "Persistent semantic memory using PostgreSQL, pgvector, and Sentence-Transformers",
+      "PDF and DOCX ingestion for context-aware, document-grounded answers",
+      "LangGraph-based tool routing and task-oriented workflows",
+      "Permission-aware integrations for web research, email, calendar, and desktop workflows",
+      "JWT authentication, Argon2 password hashing, database migrations, and automated tests",
+      "Cloud deployment workflow with health checks and GitHub Actions CI"
+    ],
+    challenges: [
+      {
+        challenge: "Maintaining useful context across separate conversations",
+        solution: "Added persistent memory and semantic retrieval so relevant facts and prior context can be retrieved instead of relying only on the active chat."
+      },
+      {
+        challenge: "Keeping real-world actions safe and auditable",
+        solution: "Designed permission-aware workflows that separate planning from execution and require approval for consequential actions."
+      },
+      {
+        challenge: "Supporting natural voice interaction without losing conversation continuity",
+        solution: "Integrated real-time voice transport and streaming conversation handling alongside the text conversation workflow."
+      }
+    ],
+    futureImprovements: [
+      "Continue hardening cloud reliability and reconnect behavior under real-world network conditions",
+      "Expand end-to-end verification for email, calendar, reminders, and voice-driven workflows",
+      "Improve proactive planning and user-controlled memory refinement"
+    ],
+    tech: [
+      "Python",
+      "FastAPI",
+      "LangGraph",
+      "PostgreSQL",
+      "pgvector",
+      "Sentence-Transformers",
+      "React",
+      "LiveKit",
+      "WebSockets",
+      "Docker",
+      "pytest",
+      "GitHub Actions"
+    ],
+    links: {
+      github: "https://github.com/Sarosh548/NOVA-AI-Personal-Assistant",
+      demo: "https://sarosh548.github.io/NOVA-AI-Personal-Assistant/#/conversation"
+    }
+  },
   {
     slug: "amaan-ciro",
     featured: true,

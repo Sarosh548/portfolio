@@ -9,8 +9,7 @@ export default function Projects() {
         <span className="section-label">03 — projects</span>
         <h2 className="section-heading">Featured work</h2>
         <p className="projects__intro prose-col">
-          Three systems spanning agentic AI, retrieval-augmented generation, and computer vision — each
-          taken from architecture through to a working, deployed system.
+          Four systems spanning personal AI, agentic workflows, retrieval-augmented generation, and computer vision — each taken from architecture through to a working system.
         </p>
 
         <div className="projects__list">
@@ -41,9 +40,7 @@ export default function Projects() {
 
                 <div className="project-card__tech">
                   {project.tech.slice(0, 6).map((t) => (
-                    <span key={t} className="tag">
-                      {t}
-                    </span>
+                    <span key={t} className="tag">{t}</span>
                   ))}
                   {project.tech.length > 6 && (
                     <span className="tag tag--muted">+{project.tech.length - 6} more</span>
