@@ -30,6 +30,7 @@ function MotionEffects() {
     const revealSelector = [
       ".hero__main > *",
       ".hero__visual",
+      ".hero__scroll-cue",
       ".section-label",
       ".section-heading",
       ".about__body > p",
@@ -41,6 +42,7 @@ function MotionEffects() {
       ".services__card",
       ".contact__link",
       ".contact__form",
+      ".case-study__back",
       ".case-study__header",
       ".case-study__section",
       ".case-study__flow-step",
@@ -58,11 +60,11 @@ function MotionEffects() {
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+        }, { threshold: 0.08, rootMargin: "0px 0px -4% 0px" });
 
         targets.forEach((node, index) => {
           node.classList.add("motion-reveal");
-          node.style.setProperty("--reveal-delay", `${(index % 5) * 65}ms`);
+          node.style.setProperty("--reveal-delay", `${(index % 5) * 95}ms`);
           observer.observe(node);
         });
       } else {
@@ -79,8 +81,8 @@ function MotionEffects() {
       const rect = event.currentTarget.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      const tiltX = ((x / rect.width) - 0.5) * 4;
-      const tiltY = (0.5 - (y / rect.height)) * 4;
+      const tiltX = ((x / rect.width) - 0.5) * 9;
+      const tiltY = (0.5 - (y / rect.height)) * 9;
       event.currentTarget.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
       event.currentTarget.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
       event.currentTarget.style.setProperty("--glow-x", `${x}px`);

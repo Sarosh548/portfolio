@@ -755,3 +755,49 @@ p { color: var(--text-secondary); }
   }
   .motion-reveal { opacity: 1 !important; filter: none !important; transform: none !important; }
 }
+
+
+/* Visible, dependable scroll motion. Use the independent translate property so card tilt keeps control of transform. */
+.motion-reveal {
+  opacity: 0;
+  filter: blur(7px);
+  translate: 0 42px;
+  transition:
+    opacity .95s cubic-bezier(.16,1,.3,1) var(--reveal-delay, 0ms),
+    translate .95s cubic-bezier(.16,1,.3,1) var(--reveal-delay, 0ms),
+    filter .95s cubic-bezier(.16,1,.3,1) var(--reveal-delay, 0ms);
+  will-change: opacity, translate, filter;
+}
+.motion-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  translate: 0 0;
+}
+.project-card,.skills__group,.services__card,.hero__panel,.education__card,.contact__form {
+  transition: transform .32s cubic-bezier(.16,1,.3,1), translate .32s cubic-bezier(.16,1,.3,1), border-color .32s ease, box-shadow .32s ease;
+  will-change: transform;
+}
+.project-card:hover,.skills__group:hover,.services__card:hover,.hero__panel:hover,.education__card:hover,.contact__form:hover {
+  translate: 0 -6px;
+}
+.project-card:first-child:hover { translate: 0 -7px; }
+.hero__stat-value {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  animation: stat-arrive .75s cubic-bezier(.16,1,.3,1) both;
+}
+.hero__stat:nth-child(2) .hero__stat-value { animation-delay: .08s; }
+.hero__stat:nth-child(3) .hero__stat-value { animation-delay: .16s; }
+.hero__stat:nth-child(4) .hero__stat-value { animation-delay: .24s; }
+@keyframes stat-arrive {
+  from { opacity: .15; translate: 0 8px; filter: blur(5px); }
+  to { opacity: 1; translate: 0 0; filter: blur(0); }
+}
+@media (max-width: 860px) {
+  .motion-reveal { translate: 0 28px; }
+  .project-card,.skills__group,.services__card,.hero__panel,.education__card,.contact__form { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal { opacity: 1 !important; filter: none !important; translate: none !important; }
+  .project-card,.skills__group,.services__card,.hero__panel,.education__card,.contact__form { transform: none !important; translate: none !important; }
+}

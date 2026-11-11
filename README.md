@@ -1,6 +1,6 @@
 # Sarosh Qaiser — AI Engineer Portfolio
 
-A responsive, dark editorial-style portfolio built with React 19 and Vite. It highlights AI engineering work across agentic systems, RAG, computer vision, forecasting, and full-stack platforms.
+A responsive, cinematic dark portfolio with scroll reveals, 3D card interactions, and an emerald glow system, built with React 19 and Vite. It highlights AI engineering work across agentic systems, RAG, computer vision, forecasting, and full-stack platforms.
 
 ## Featured work
 
