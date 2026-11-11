@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -79,6 +79,7 @@ function MotionEffects() {
 
     const onPointerMove = (event) => {
       const rect = event.currentTarget.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
       const tiltX = ((x / rect.width) - 0.5) * 9;
@@ -114,14 +115,49 @@ function MotionEffects() {
   return <div className="scroll-progress" aria-hidden="true" />;
 }
 
+function ScrollToHash() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      if (pathname !== "/") window.scrollTo({ top: 0, behavior: "auto" });
+      return undefined;
+    }
+
+    const targetId = decodeURIComponent(hash.slice(1));
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [pathname, hash]);
+
+  return null;
+}
+
+function NotFound() {
+  return (
+    <main className="container case-study__notfound">
+      <h1>Page not found</h1>
+      <p>The page you requested does not exist.</p>
+      <Link to="/">Back to portfolio</Link>
+    </main>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <MotionEffects />
+      <ScrollToHash />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:slug" element={<CaseStudy />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
