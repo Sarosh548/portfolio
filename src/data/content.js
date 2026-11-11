@@ -13,7 +13,7 @@ export const profile = {
   phone: "0339-2233548",
   github: "https://github.com/Sarosh548",
   linkedin: "https://www.linkedin.com/in/saroshqaiser",
-  resumeUrl: "/Sarosh-Qaiser-AI-Engineer-CV.docx",
+  resumeUrl: "/Sarosh-Qaiser-AI-Engineer-CV.pdf",
   summary:
     "AI Engineer with hands-on experience building agentic workflows, RAG pipelines, and multi-agent systems with LangGraph and React, and shipping production-ready ML models with Python, PyTorch, and TensorFlow. Skilled in designing end-to-end data pipelines, applying NLP and deep learning techniques, and deploying AI solutions across computer vision, forecasting, and full-stack platforms.",
 };

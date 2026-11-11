@@ -33,8 +33,3 @@ npm run lint
 - `vercel.json` includes an SPA rewrite so direct case-study URLs resolve correctly.
 
 The CV download is served from `public/Sarosh-Qaiser-AI-Engineer-CV.docx`.
-
-
-## Sharing preview
-
-The public site includes a 1200×630 Open Graph/Twitter social preview image at `public/og-image.svg`.

@@ -3,7 +3,7 @@ import { profile, heroStats } from "../data/content";
 import "./Hero.css";
 
 function StatCounter({ value, active }) {
-  const match = String(value).match(/^([\\d,]+(?:\\.\\d+)?)(.*)$/);
+  const match = String(value).match(/^([\d,]+(?:\.\d+)?)(.*)$/);
   const rawNumber = match ? match[1].replaceAll(",", "") : "0";
   const target = Number(rawNumber);
   const suffix = match?.[2] ?? "";
