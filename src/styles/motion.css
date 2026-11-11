@@ -558,7 +558,7 @@ p { color: var(--text-secondary); }
 .experience__role { color: #e6f3ec; font-size: 22px; }
 .experience__org { color: #8de8c2; font-size: 13px; }
 .experience__period { color: #80958b; font-size: 11px; }
-.experience__points li { color: #9caf a6; color: #9caf a6; }
+.experience__points li { color: #9cafa6; color: #9cafa6; }
 .experience__points li::before { background: var(--accent); box-shadow: 0 0 8px rgba(94,230,183,.35); }
 .education__card {
   padding: 32px;
@@ -591,7 +591,7 @@ p { color: var(--text-secondary); }
 .services__title { color: #dff2e8; font-size: 17px; }
 .services__desc { color: #91a69d; font-size: 13px; line-height: 1.8; }
 .contact__grid { gap: clamp(40px, 7vw, 92px); }
-.contact__copy { color: #9caf a6; color: #9caf a6; font-size: 15px; line-height: 1.9; }
+.contact__copy { color: #9cafa6; color: #9cafa6; font-size: 15px; line-height: 1.9; }
 .contact__link {
   padding: 17px 0;
   border-color: rgba(157,184,178,.13);
@@ -636,7 +636,7 @@ p { color: var(--text-secondary); }
 .case-study__subtitle { color: #8de8c2; }
 .case-study__duration,.case-study__note { color: #7d9288; }
 .case-study__section h2 { color: #e4f3e9; font-size: 25px; }
-.case-study__section p { color: #9caf a6; color: #9caf a6; line-height: 1.9; }
+.case-study__section p { color: #9cafa6; color: #9cafa6; line-height: 1.9; }
 .case-study__flow-step {
   color: #c2d5ca;
   border-color: rgba(157,184,178,.14);
@@ -650,7 +650,7 @@ p { color: var(--text-secondary); }
 }
 .case-study__challenge-title { color: #e5f1e9; }
 .case-study__challenge-solution { color: #98ada3; }
-.case-study__list li { color: #9caf a6; color: #9caf a6; }
+.case-study__list li { color: #9cafa6; color: #9cafa6; }
 .case-study__list li::before { background: var(--accent); }
 
 /* Motion and depth */
