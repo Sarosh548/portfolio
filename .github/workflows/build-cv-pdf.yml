@@ -19,6 +19,7 @@ concurrency:
 jobs:
   convert:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - name: Check out portfolio
         uses: actions/checkout@v4
@@ -26,12 +27,16 @@ jobs:
           fetch-depth: 0
 
       - name: Install document conversion tools
+        timeout-minutes: 5
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libreoffice-writer poppler-utils
+          set -euo pipefail
+          sudo apt-get update -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20
+          sudo apt-get install -y --no-install-recommends libreoffice-writer poppler-utils
 
       - name: Convert and validate the CV
+        timeout-minutes: 3
         run: |
+          set -euo pipefail
           mkdir -p /tmp/cv-output
           libreoffice -env:UserInstallation=file:///tmp/lo-profile --headless --convert-to pdf --outdir /tmp/cv-output public/Sarosh-Qaiser-AI-Engineer-CV.docx
           test -s /tmp/cv-output/Sarosh-Qaiser-AI-Engineer-CV.pdf
@@ -41,6 +46,7 @@ jobs:
 
       - name: Commit the generated PDF to this review branch
         run: |
+          set -euo pipefail
           cp /tmp/cv-output/Sarosh-Qaiser-AI-Engineer-CV.pdf public/Sarosh-Qaiser-AI-Engineer-CV.pdf
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
