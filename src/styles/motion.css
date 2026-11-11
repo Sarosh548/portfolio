@@ -801,3 +801,24 @@ p { color: var(--text-secondary); }
   .motion-reveal { opacity: 1 !important; filter: none !important; translate: none !important; }
   .project-card,.skills__group,.services__card,.hero__panel,.education__card,.contact__form { transform: none !important; translate: none !important; }
 }
+
+
+/* Reveal and 3D tilt share transform: restore the tilt transform once a card has entered. */
+.motion-reveal.is-visible.project-card,
+.motion-reveal.is-visible.skills__group,
+.motion-reveal.is-visible.services__card,
+.motion-reveal.is-visible.hero__panel,
+.motion-reveal.is-visible.education__card,
+.motion-reveal.is-visible.contact__form {
+  transform: perspective(1100px) rotateX(var(--tilt-y, 0deg)) rotateY(var(--tilt-x, 0deg));
+}
+@media (max-width: 860px) {
+  .motion-reveal.is-visible.project-card,
+  .motion-reveal.is-visible.skills__group,
+  .motion-reveal.is-visible.services__card,
+  .motion-reveal.is-visible.hero__panel,
+  .motion-reveal.is-visible.education__card,
+  .motion-reveal.is-visible.contact__form {
+    transform: none !important;
+  }
+}

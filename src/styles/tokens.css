@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --bg-base: #f7f8f5;
   --bg-surface: #ffffff;
   --bg-surface-2: #f0f3ee;
