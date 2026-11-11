@@ -2,6 +2,43 @@ import { useEffect, useRef, useState } from "react";
 import { profile, heroStats } from "../data/content";
 import "./Hero.css";
 
+function StatCounter({ value, active }) {
+  const match = String(value).match(/^([\d,]+(?:\.\d+)?)(.*)$/);
+  const rawNumber = match ? match[1].replaceAll(",", "") : "0";
+  const target = Number(rawNumber);
+  const suffix = match?.[2] ?? "";
+  const decimals = (rawNumber.split(".")[1] ?? "").length;
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!active) return undefined;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion || !Number.isFinite(target)) {
+      setCount(target);
+      return undefined;
+    }
+    let frame = 0;
+    const start = performance.now();
+    const duration = 1550;
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      setCount(target * eased);
+      if (progress < 1) frame = window.requestAnimationFrame(tick);
+      else setCount(target);
+    };
+    frame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frame);
+  }, [active, target]);
+
+  const formatted = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(count);
+
+  return <span className="hero__stat-value">{formatted}{suffix}</span>;
+}
+
 export default function Hero() {
   const [live, setLive] = useState(false);
   const ref = useRef(null);
@@ -43,14 +80,14 @@ export default function Hero() {
             <div className="hero__portrait-orbit hero__portrait-orbit--one" />
             <div className="hero__portrait-orbit hero__portrait-orbit--two" />
             <div className="hero__portrait-placeholder hero__portrait-placeholder--photo">
-              <img src="/profile.jpg.PNG" alt="Sarosh Qaiser" className="hero__portrait-image" />
+              <img src="/profile.png" alt="Sarosh Qaiser" className="hero__portrait-image" />
               <span className="hero__portrait-caption">AI ENGINEER · LAHORE</span>
             </div>
           </div>
           <div className="hero__panel">
             <div className="hero__panel-header"><span className="hero__panel-kicker">A few things I’ve built</span><span className="hero__panel-line" /></div>
             <div className="hero__stats">
-              {heroStats.map((stat, i) => <div className={`hero__stat ${live ? "hero__stat--live" : ""}`} style={{ transitionDelay: `${i * 100}ms` }} key={stat.label}><span className="hero__stat-value">{stat.value}</span><span className="hero__stat-label">{stat.label}</span></div>)}
+              {heroStats.map((stat, i) => <div className={`hero__stat ${live ? "hero__stat--live" : ""}`} style={{ transitionDelay: `${i * 100}ms` }} key={stat.label}><StatCounter value={stat.value} active={live} /><span className="hero__stat-label">{stat.label}</span></div>)}
             </div>
           </div>
         </aside>

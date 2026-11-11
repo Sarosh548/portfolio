@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { nav, profile } from "../data/content";
 import "./Navbar.css";
 
@@ -8,41 +9,51 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
   }, [open]);
+
+  const sectionUrl = (href) => `/${href}`;
 
   return (
     <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <div className="container navbar__inner">
-        <a href="#top" className="navbar__logo">
+        <Link to="/#top" className="navbar__logo" onClick={() => setOpen(false)}>
           {profile.name
             .split(" ")
             .map((n) => n[0])
             .join("")}
-        </a>
+        </Link>
 
         <nav className="navbar__links" aria-label="Primary">
           {nav.map((item) => (
-            <a key={item.href} href={item.href}>
+            <Link key={item.href} to={sectionUrl(item.href)}>
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a href="#contact" className="navbar__cta">
+        <Link to="/#contact" className="navbar__cta">
           Get in touch
-        </a>
+        </Link>
 
         <button
+          type="button"
           className="navbar__burger"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen((value) => !value)}
         >
           <span />
           <span />
@@ -50,16 +61,16 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="navbar__mobile">
+        <nav className="navbar__mobile" id="mobile-navigation" aria-label="Mobile">
           {nav.map((item) => (
-            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            <Link key={item.href} to={sectionUrl(item.href)} onClick={() => setOpen(false)}>
               {item.label}
-            </a>
+            </Link>
           ))}
-          <a href="#contact" className="navbar__mobile-cta" onClick={() => setOpen(false)}>
+          <Link to="/#contact" className="navbar__mobile-cta" onClick={() => setOpen(false)}>
             Get in touch
-          </a>
-        </div>
+          </Link>
+        </nav>
       )}
     </header>
   );
