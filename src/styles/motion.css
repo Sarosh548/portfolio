@@ -58,7 +58,7 @@ body {
   background-size: 27px 27px;
   mask-image: linear-gradient(to bottom, black, transparent 72%);
 }
-#root > * { position: relative; z-index: 1; }
+#root > *:not(.navbar):not(.scroll-progress) { position: relative; z-index: 1; }
 ::selection { color: #17342d; background: rgba(129,177,160,.28); }
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: #edf1ed; }
