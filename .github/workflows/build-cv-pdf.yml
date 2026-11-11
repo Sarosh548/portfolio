@@ -1,0 +1,53 @@
+name: Build recruiter-friendly CV PDF
+
+on:
+  push:
+    branches:
+      - feat/cinematic-motion-redesign
+    paths:
+      - public/Sarosh-Qaiser-AI-Engineer-CV.docx
+      - .github/workflows/build-cv-pdf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cv-pdf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out portfolio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install document conversion tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libreoffice-writer poppler-utils
+
+      - name: Convert and validate the CV
+        run: |
+          mkdir -p /tmp/cv-output
+          libreoffice -env:UserInstallation=file:///tmp/lo-profile --headless --convert-to pdf --outdir /tmp/cv-output public/Sarosh-Qaiser-AI-Engineer-CV.docx
+          test -s /tmp/cv-output/Sarosh-Qaiser-AI-Engineer-CV.pdf
+          pdfinfo /tmp/cv-output/Sarosh-Qaiser-AI-Engineer-CV.pdf
+          pdftotext -layout /tmp/cv-output/Sarosh-Qaiser-AI-Engineer-CV.pdf /tmp/cv-output/cv.txt
+          test -s /tmp/cv-output/cv.txt
+
+      - name: Commit the generated PDF to this review branch
+        run: |
+          cp /tmp/cv-output/Sarosh-Qaiser-AI-Engineer-CV.pdf public/Sarosh-Qaiser-AI-Engineer-CV.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/Sarosh-Qaiser-AI-Engineer-CV.pdf
+          if git diff --cached --quiet; then
+            echo "CV PDF is already up to date."
+            exit 0
+          fi
+          git commit -m "Add PDF version of AI Engineer CV"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
