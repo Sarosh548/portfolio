@@ -43,4 +43,4 @@ The CV download is served from `public/Sarosh-Qaiser-AI-Engineer-CV.docx` until 
 
 ## Sharing preview
 
-The public site includes a 1200×630 Open Graph/Twitter sharing image at `public/og-image.svg`.
+The public site includes a 1200×630 PNG Open Graph/Twitter sharing image at `public/og-image.png`; the spatial SVG artwork is also retained at `public/og-image.svg`.
