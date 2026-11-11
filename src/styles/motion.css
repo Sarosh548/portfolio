@@ -448,7 +448,8 @@ p { color: var(--text-secondary); }
   box-shadow: 0 28px 70px rgba(43,68,56,.13), 0 5px 17px rgba(43,68,56,.055), inset 0 1px 0 #fff;
   backdrop-filter: blur(22px) saturate(145%);
   -webkit-backdrop-filter: blur(22px) saturate(145%);
-  transform: translateX(22px);
+  transform: perspective(1000px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg)) translateX(22px);
+  will-change: transform;
 }
 .hero__panel-header { margin-bottom: 8px; }
 .hero__panel-kicker {
@@ -514,7 +515,9 @@ p { color: var(--text-secondary); }
   border-radius: 22px;
   background: linear-gradient(145deg, rgba(255,255,255,.84), rgba(248,250,247,.7));
   box-shadow: 0 14px 34px rgba(50,75,64,.065), inset 0 1px 0 #fff;
-  transition: border-color .3s ease, box-shadow .3s ease, translate .35s var(--ease);
+  transform: perspective(1000px) rotateX(var(--tilt-y,0deg)) rotateY(var(--tilt-x,0deg));
+  will-change: transform;
+  transition: border-color .3s ease, box-shadow .3s ease, translate .35s var(--ease), transform .3s var(--ease);
 }
 .skills__group::before {
   position: absolute;
