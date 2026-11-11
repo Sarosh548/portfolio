@@ -1,30 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  color-scheme: dark;
-  --bg-base: #f7f8f5;
-  --bg-surface: #ffffff;
-  --bg-surface-2: #f0f3ee;
-  --bg-surface-hover: #e8eee7;
-  --border-hairline: #e5e9e2;
-  --border-strong: #cbd5ca;
-  --text-primary: #1b2923;
-  --text-secondary: #58675f;
-  --text-muted: #7d8981;
-  --accent: #3e8068;
-  --accent-bright: #2f725a;
-  --accent-dim: #285d49;
-  --accent-wash: rgba(62, 128, 104, 0.09);
-  --amber: #b98945;
-  --amber-wash: rgba(185, 137, 69, 0.12);
-  --danger: #bd554d;
+  color-scheme: light;
+  --bg-base: #f3f5f1;
+  --bg-surface: rgba(255,255,255,.76);
+  --bg-surface-2: #eaf0eb;
+  --bg-surface-hover: #ffffff;
+  --border-hairline: rgba(34,57,49,.09);
+  --border-strong: rgba(66,113,101,.28);
+  --text-primary: #1d2b29;
+  --text-secondary: #586b66;
+  --text-muted: #83918c;
+  --accent: #62877d;
+  --accent-bright: #3e6d63;
+  --accent-dim: #31594f;
+  --accent-wash: rgba(98,135,125,.11);
+  --amber: #b58b57;
+  --amber-wash: rgba(181,139,87,.12);
+  --danger: #b95650;
   --font-display: "Manrope", sans-serif;
   --font-body: "DM Sans", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  --content-width: 1180px;
+  --content-width: 1240px;
   --col-width: 68ch;
-  --radius: 10px;
-  --radius-lg: 20px;
+  --radius: 16px;
+  --radius-lg: 28px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 

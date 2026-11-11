@@ -1,6 +1,13 @@
 # Sarosh Qaiser — AI Engineer Portfolio
 
-A responsive, cinematic dark portfolio with scroll reveals, 3D card interactions, and an emerald glow system, built with React 19 and Vite. It highlights AI engineering work across agentic systems, RAG, computer vision, forecasting, and full-stack platforms.
+A responsive spatial UI portfolio with a light, layered visual system, translucent floating surfaces, subtle 3D depth, and scroll-triggered motion. Built with React 19 and Vite. It highlights AI engineering work across agentic systems, RAG, computer vision, forecasting, and full-stack platforms.
+
+## Visual direction
+
+- Soft, light ambient canvas with depth from glass-like panels and layered surfaces.
+- Floating capsule navigation, overlapping hero metrics, and tactile project/skill cards.
+- Restrained pointer tilt and hover lift on desktop, with touch-friendly mobile layouts.
+- Scroll reveal and case-study entrance transitions respect reduced-motion preferences.
 
 ## Featured work
 
@@ -12,7 +19,7 @@ A responsive, cinematic dark portfolio with scroll reveals, 3D card interactions
 ## Stack
 
 - React 19 + Vite + React Router
-- Plain CSS with custom design tokens
+- Plain CSS with spatial design tokens
 - Static frontend; no server-side secrets required
 
 ## Local development
@@ -32,9 +39,8 @@ npm run lint
 - Install command: `npm ci`
 - `vercel.json` includes an SPA rewrite so direct case-study URLs resolve correctly.
 
-The CV download is served from `public/Sarosh-Qaiser-AI-Engineer-CV.docx`.
-
+The CV download is served from `public/Sarosh-Qaiser-AI-Engineer-CV.docx` until the verified PDF artifact is available.
 
 ## Sharing preview
 
-The public site includes a 1200×630 Open Graph/Twitter social preview image at `public/og-image.svg`.
+The public site includes a 1200×630 Open Graph/Twitter sharing image at `public/og-image.svg`.
